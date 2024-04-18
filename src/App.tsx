@@ -21,7 +21,9 @@ function App() {
 						<Link style={{ color: 'black' }} to="/todos/1">
 							Todos Detail 1
 						</Link>{' '}
-						<Link to="login">Login</Link>
+						<Link style={{ color: 'black' }} to="/admin">
+							Admin
+						</Link>{' '}
 						<br></br>
 					</nav>
 					{session && (
@@ -32,6 +34,7 @@ function App() {
 								onClick={() => {
 									clearSession();
 									navigate('/login');
+									
 								}}
 							>
 								LogOut

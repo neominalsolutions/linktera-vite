@@ -13,6 +13,14 @@ const axiosInstance: AxiosInstance = axios.create({
 
 function OnRequest(config: InternalAxiosRequestConfig) {
 	console.log('config', config);
+
+	const token = sessionStorage.getItem('x-token');
+
+	// client üzerinden api ile haberleşirken merkezi olarak header access tokenlarını set etmeyi sağlar.
+	if (token) {
+		config.headers.Authorization = `Bearer ${token}`;
+	}
+
 	return config;
 }
 

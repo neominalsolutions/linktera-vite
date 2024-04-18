@@ -23,6 +23,7 @@ export const SessionProvider = ({ children }: any) => {
 
 	const clearSession = () => {
 		setSession(null);
+		sessionStorage.removeItem('x-token');
 	};
 
 	const updateSession = (decoded: any) => {

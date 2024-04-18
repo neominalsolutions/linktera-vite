@@ -6,7 +6,10 @@ import TodoSamplePage from './pages/TodoSamplePage.tsx';
 import TodoSampleDetailPage from './pages/TodoSampleDetailPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import { SessionProvider } from './contexts/SessionProvider.tsx';
+import AdminLayoutPage from './pages/AdminPage.tsx';
+import AuthUserGuard from './guards/AuthUserGuard.tsx';
 
+// AuntenticatedUserGuard girilmeden admin page'e gidilmez.
 const router = createBrowserRouter([
 	{
 		path: '',
@@ -25,6 +28,15 @@ const router = createBrowserRouter([
 				Component: LoginPage,
 			},
 		],
+	},
+	{
+		path: '/admin',
+		element: (
+			<AuthUserGuard>
+				<AdminLayoutPage />
+			</AuthUserGuard>
+		),
+		children: [],
 	},
 	{
 		path: '*',
