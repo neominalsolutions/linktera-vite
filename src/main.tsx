@@ -5,6 +5,7 @@ import './index.css';
 import TodoSamplePage from './pages/TodoSamplePage.tsx';
 import TodoSampleDetailPage from './pages/TodoSampleDetailPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
+import { SessionProvider } from './contexts/SessionProvider.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -32,7 +33,9 @@ const router = createBrowserRouter([
 ]);
 
 // * path root'a ve en son dosya olarak yazılır.
-
+// SessionProvider bütün uygulama gelenine sarıp, tüm componentlerden oturum açan kullanıcı bilgisine erişilmesini sağlamak.
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<RouterProvider router={router} />
+	<SessionProvider>
+		<RouterProvider router={router} />
+	</SessionProvider>
 );

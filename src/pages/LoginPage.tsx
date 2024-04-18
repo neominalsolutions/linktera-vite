@@ -4,6 +4,11 @@ import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { loginSchema } from '../validations/login.schema';
+import { useContext } from 'react';
+import {
+	SessionContext,
+	SessionContextType,
+} from '../contexts/SessionProvider';
 
 type AddressInput = {
 	street?: string;
@@ -17,6 +22,7 @@ type LoginInput = {
 
 function LoginPage() {
 	const navigate = useNavigate(); // yönlendirme işlemi
+	const { updateSession } = useContext(SessionContext) as SessionContextType;
 
 	const {
 		handleSubmit,
@@ -37,6 +43,7 @@ function LoginPage() {
 			// YARIN SESSION STATE'e atılacak.
 			const decoded = jwtDecode(import.meta.env.VITE_TOKEN);
 			console.log('decoded', decoded);
+			updateSession(decoded); // session update edilmiş oldu.
 			reset();
 			navigate('/');
 		}
