@@ -4,6 +4,7 @@ import App from './App.tsx';
 import './index.css';
 import TodoSamplePage from './pages/TodoSamplePage.tsx';
 import TodoSampleDetailPage from './pages/TodoSampleDetailPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
 
 const router = createBrowserRouter([
 	{
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
 			{
 				path: 'todos/:id',
 				Component: TodoSampleDetailPage,
+			},
+			{
+				path: 'login',
+				Component: LoginPage,
 			},
 		],
 	},

@@ -13,7 +13,8 @@ function App() {
 						</Link>{' '}
 						<Link style={{ color: 'black' }} to="/todos/1">
 							Todos Detail 1
-						</Link>
+						</Link>{' '}
+						<Link to="login">Login</Link>
 						<br></br>
 					</nav>
 				</header>
